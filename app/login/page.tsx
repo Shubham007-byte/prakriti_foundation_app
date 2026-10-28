@@ -1,0 +1,5 @@
+import { login } from './actions';
+export default async function Login({ searchParams }: { searchParams: Promise<{error?: string}> }) {
+  const { error } = await searchParams;
+  return <main className="wrap section" style={{maxWidth:520}}><a href="/">← Back to website</a><div className="panel" style={{marginTop:22}}><div className="eyebrow">Team access</div><h1>Admin sign in</h1><p className="muted">Only pre-approved team email addresses can sign in.</p>{error && <p className="notice">Sign-in unsuccessful. Check the email allowlist and credentials, then try again.</p>}<form action={login}><label htmlFor="email">Team email</label><input id="email" name="email" type="email" autoComplete="username" required/><label htmlFor="password">Password</label><input id="password" name="password" type="password" autoComplete="current-password" required/><button type="submit">Sign in securely</button></form><p className="small">Create team accounts from the Supabase dashboard; public sign-up is not provided.</p></div></main>;
+}
